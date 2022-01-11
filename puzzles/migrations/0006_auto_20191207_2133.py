@@ -15,13 +15,14 @@ class Migration(migrations.Migration):
             name="status",
             field=models.CharField(
                 choices=[
+                    ("NEW", "NEW"),
                     ("SOLVING", "SOLVING"),
                     ("PENDING", "PENDING"),
                     ("SOLVED", "SOLVED"),
                     ("STUCK", "STUCK"),
                     ("EXTRACTION", "EXTRACTION"),
                 ],
-                default="SOLVING",
+                default="NEW",
                 max_length=10,
             ),
         ),
