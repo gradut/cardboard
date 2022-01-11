@@ -43,7 +43,7 @@ async def send_puzzles_unsolved(message):
     puzzles = await sync_to_async(list)(
         Puzzle.objects.filter(
             Q(hunt=settings.BOT_ACTIVE_HUNT),
-            Q(status=Puzzle.SOLVING) | Q(status=Puzzle.PENDING),
+            Q(status=Puzzle.NEW) | Q(status=Puzzle.SOLVING) | Q(status=Puzzle.PENDING),
         ).select_related("chat_room")
     )
     await send_puzzles(message, puzzles, "Unsolved puzzles")
