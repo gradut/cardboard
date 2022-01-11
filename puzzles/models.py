@@ -45,19 +45,20 @@ class Puzzle(models.Model):
     notes = models.TextField(default="")
     sheet = models.URLField(default=None, unique=True, null=True, blank=True)
 
+    NEW = "NEW"
     SOLVING = "SOLVING"
     PENDING = "PENDING"  # Only supported when answer_queue_enabled is True
     SOLVED = "SOLVED"
     STUCK = "STUCK"
     EXTRACTION = "EXTRACTION"
-    ALL_STATUSES = [SOLVING, PENDING, SOLVED, STUCK, EXTRACTION]
+    ALL_STATUSES = [NEW, SOLVING, PENDING, SOLVED, STUCK, EXTRACTION]
     # Users should only be able to change status to one of these 3.
-    VISIBLE_STATUS_CHOICES = [SOLVING, STUCK, EXTRACTION]
+    VISIBLE_STATUS_CHOICES = [NEW, SOLVING, STUCK, EXTRACTION]
 
     status = models.CharField(
         max_length=10,
         choices=[(status, status) for status in ALL_STATUSES],
-        default=SOLVING,
+        default=NEW,
     )
 
     # Deprecated. Use guesses instead (see answers/models.py) which points to an Answer
