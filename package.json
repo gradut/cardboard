@@ -5,6 +5,9 @@
   "repository": "git@github.com:cardinalitypuzzles/cardboard.git",
   "author": "Cardinality <cardinalitypuzzles@gmail.com>",
   "license": "MIT",
+  "engines" : {
+    "node": "14.x"
+  }
   "scripts": {
     "dev": "webpack --config webpack.dev.js ./hunts/src/index.js --output-path ./hunts/static",
     "build": "webpack --config webpack.prod.js ./hunts/src/index.js --output-path ./hunts/static",
